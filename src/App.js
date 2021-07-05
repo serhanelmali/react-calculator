@@ -2,13 +2,23 @@ import React, { useState } from "react";
 import "./App.scss";
 
 function App() {
-  const [input, setInput] = useState([]);
+  const [input, setInput] = useState("");
 
   const inputHandler = (e) => {
     let value = e.target.value;
-    console.log(value);
-
-    return setInput(input + value);
+    let last = input.charAt(input.length - 1);
+    if (
+      ((value === "+" || value === "*" || value === "/" || value === "-") &&
+        (last === "-" || last === "*" || last === "/" || last === "+")) ||
+      (value === "=" &&
+        (last === "-" || last === "*" || last === "/" || last === "+"))
+    ) {
+      return;
+    } else if (value == "=") {
+      return setInput(String(eval(input)));
+    } else {
+      return setInput(input + value);
+    }
   };
 
   return (
@@ -63,7 +73,7 @@ function App() {
             <button value={"+"} onClick={(e) => inputHandler(e)}>
               +
             </button>
-            <button value={"="} onClick={() => setInput(String(eval(input)))}>
+            <button value={"="} onClick={(e) => inputHandler(e)}>
               =
             </button>
           </div>
