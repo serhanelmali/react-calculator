@@ -39,9 +39,10 @@
       width: 75%;
 
       #clear {
-        width: 66.6%;
+        width: 33.3%;
         order: 1;
         color: rgba(0, 0, 0, 0.5);
+        font-size: 34px;
       }
 
       button {
@@ -54,6 +55,19 @@
         }
         &:nth-child(10) {
           order: 2;
+          width: 33.3%;
+        }
+
+        &:nth-child(12) {
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+          order: 3;
+          width: 33.3%;
+          background: rgb(223, 63, 84);
+          color: white;
+          border: 1px solid black;
+          font-size: 48px;
         }
       }
     }

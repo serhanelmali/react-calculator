@@ -14,9 +14,14 @@ function App() {
         (last === "-" || last === "*" || last === "/" || last === "+"))
     ) {
       return;
-    } else if (value == "=") {
+    } else if (value == "=" && input.length > 1) {
       return setInput(String(eval(input)));
-    } else {
+    } else if (
+      input.length < 1 &&
+      (value === "+" || value === "*" || value === "/" || value === "-")
+    ) {
+      return;
+    } else if (value !== "=") {
       return setInput(input + value);
     }
   };
@@ -61,6 +66,9 @@ function App() {
             </button>
             <button value={"clear"} id="clear" onClick={() => setInput("")}>
               clear
+            </button>
+            <button value={"*"} onClick={(e) => inputHandler(e)}>
+              *
             </button>
           </div>
           <div className="calculator__buttons__functions">
